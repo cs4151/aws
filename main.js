@@ -39,32 +39,32 @@ async function loadStations(url) {
     let jsondata = await response.json();
 
     // Wetterstationen mit Icons und Popups
-    
-// Wetterstationen mit Icons und Popups
 
-L.geoJSON(jsondata, {
-    attribution: "Datenquelle: <ahref='https://static.avalanche.report/weather_stations/stations.geojson'>Wetterstationen</a>",
-    //definieren wie popups dargestellt werden, dass marker zu position passt und nicht verschoben ist
-    pointToLayer: function (feature, latlng) {
-        return L.marker(latlng, {
-            icon: L.icon({
-                iconUrl: "icons/wifi.png",
-                iconAnchor: [16, 37],
-                popupAnchor: [0, -37]
-            })
-        });
-    },
-    onEachFeature: function (feature, layer) {
-    
-        //information zu seehöhe aus drittem wert der koordinaten (index 2)
-        let elevation = feature.geometry.coordinates.length > 2 
-         ? (feature.geometry.coordinates[2]) 
-        : "unbekannt";
-        layer.bindPopup(`
+    // Wetterstationen mit Icons und Popups
+
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: <ahref='https://static.avalanche.report/weather_stations/stations.geojson'>Wetterstationen</a>",
+        //definieren wie popups dargestellt werden, dass marker zu position passt und nicht verschoben ist
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: "icons/wifi.png",
+                    iconAnchor: [16, 37],
+                    popupAnchor: [0, -37]
+                })
+            });
+        },
+        onEachFeature: function (feature, layer) {
+
+            //information zu seehöhe aus drittem wert der koordinaten (index 2)
+            let elevation = feature.geometry.coordinates.length > 2
+                ? (feature.geometry.coordinates[2])
+                : "unbekannt";
+            layer.bindPopup(`
      <h4>${feature.properties.name} (${elevation}m) </h4>
             `);
-    }
-}).addTo(overlays.stations);
+        }
+    }).addTo(overlays.stations);
 }
 
 
