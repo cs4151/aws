@@ -23,7 +23,7 @@ L.control.layers({
     }).addTo(map),
     "OpenStreetMap": L.tileLayer.provider("OpenStreetMap.Mapnik"),
     "OpenTopoMap": L.tileLayer.provider("OpenTopoMap"),
-    "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
+    "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery")
 }, {
     "Wetterstationen": overlays.stations,
 }).addTo(map);
