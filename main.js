@@ -23,7 +23,7 @@ L.control.layers({
     }).addTo(map),
     "OpenStreetMap": L.tileLayer.provider("OpenStreetMap.Mapnik"),
     "OpenTopoMap": L.tileLayer.provider("OpenTopoMap"),
-    "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery")
+    "Esri WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
 }, {
     "Wetterstationen": overlays.stations,
 }).addTo(map);
@@ -41,7 +41,7 @@ async function loadStations(url) {
     // Wetterstationen mit Icons und Popups
 
     L.geoJSON(jsondata, {
-        attribution: "<ahref='https://static.avalanche.report/weather_stations/stations.geojson'</a>",
+        attribution: "Datenquelle:<ahref='https://static.avalanche.report/weather_stations/stations.geojson'>Avalanche.report Open Data</a>",
         //definieren wie popups dargestellt werden, dass marker zu position passt und nicht verschoben ist
         pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
