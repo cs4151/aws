@@ -40,8 +40,6 @@ async function loadStations(url) {
 
     // Wetterstationen mit Icons und Popups
 
-    // Wetterstationen mit Icons und Popups
-
     L.geoJSON(jsondata, {
         attribution: "Datenquelle: <ahref='https://static.avalanche.report/weather_stations/stations.geojson'>Wetterstationen</a>",
         //definieren wie popups dargestellt werden, dass marker zu position passt und nicht verschoben ist
