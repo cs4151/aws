@@ -14,7 +14,6 @@ const COLORS = {
         { min: 25, max: 30, color: "#ff1e23" },
         { min: 30, max: 50, color: "#fa3c96" },
     ],
-
     wind: [
         { min: 0, max: 5, color: "#ffff64" },
         { min: 5, max: 10, color: "#c8ff64" },
