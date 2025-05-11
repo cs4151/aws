@@ -52,20 +52,9 @@ async function loadStations(url) {
                 })
             });
         },
-        onEachFeature: function (feature, layer) {
+        onEachFeature: function(feature, layer) {
             layer.bindPopup(`
                 <h4>${feature.properties.name} (${feature.geometry.coordinates[2]}m)</h4>
-            `);
-        }
-    }).addTo(overlays.stations)
-}
-loadStations("https://static.avalanche.report/weather_stations/stations.geojson");
-            //information zu seehöhe aus drittem wert der koordinaten (index 2)
-            let elevation = feature.geometry.coordinates.length > 2
-                ? (feature.geometry.coordinates[2])
-                : "unbekannt";
-            layer.bindPopup(`
-     <h4>${feature.properties.name} (${elevation}m) </h4>
             `);
         }
     }).addTo(overlays.stations);
