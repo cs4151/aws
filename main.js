@@ -41,6 +41,21 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
+
+// Regen
+
+
+L.control.rainviewer({ 
+    position: 'bottomleft',
+    nextButtonText: '>',
+    playStopButtonText: 'Play/Stop',
+    prevButtonText: '<',
+    positionSliderLabelText: "Hour:",
+    opacitySliderLabelText: "Opacity:",
+    animationInterval: 500,
+    opacity: 0.5
+}).addTo(map);
+
 // Wetterstationen
 async function loadStations(url) {
     let response = await fetch(url);
@@ -121,8 +136,6 @@ function showSnow(jsondata) {
 }
 //Schneehöhen anzeigen Funktion
 
-// Funktion um die Schneehöhe anzuzeigen
-
 
 function showWind(jsondata) {
     L.geoJSON(jsondata, {
@@ -143,6 +156,8 @@ function showWind(jsondata) {
         },
     }).addTo(overlays.snow);
 }
+
+//windrichtung anzeigen
 function showDirect(jsondata) {
 
     L.geoJSON(jsondata, {
@@ -157,7 +172,7 @@ function showDirect(jsondata) {
             return L.marker(latlng, {
                 icon: L.divIcon({
                     className: "aws-div-icon-wind",
-                    html: `<span style="background-color:${color}"> ${feature.properties.WR.toFixed(1)}</span>`
+                     html: `<span style="background-color:${color}"> ${feature.properties.WR.toFixed(1)}°</span>`
                 })
             })
         },
