@@ -42,10 +42,10 @@ L.control.scale({
 }).addTo(map);
 
 
-// Regen
+// Regen als rainviewer plugin implementieren
 
 
-L.control.rainviewer({ 
+L.control.rainviewer({
     position: 'bottomleft',
     nextButtonText: '>',
     playStopButtonText: 'Play/Stop',
@@ -56,7 +56,7 @@ L.control.rainviewer({
     opacity: 0.5
 }).addTo(map);
 
-// Wetterstationen
+// Wetterstationen laden
 async function loadStations(url) {
     let response = await fetch(url);
     let jsondata = await response.json();
@@ -93,7 +93,8 @@ async function loadStations(url) {
     showDirect(jsondata);
 }
 loadStations("https://static.avalanche.report/weather_stations/stations.geojson");
-//Temperatur anzeigen
+
+//Temperatur anzeigen in map
 function showTemperature(jsondata) {
     L.geoJSON(jsondata, {
         filter: function (feature) {
@@ -114,7 +115,7 @@ function showTemperature(jsondata) {
 }
 
 
-// TODO: add divIcons for windspeed feature.properties.WG, windgeschwindigkeit anzeigen
+//  windgeschwindigkeiten anzeigen
 
 function showSnow(jsondata) {
     L.geoJSON(jsondata, {
@@ -172,21 +173,12 @@ function showDirect(jsondata) {
             return L.marker(latlng, {
                 icon: L.divIcon({
                     className: "aws-div-icon-wind",
-                     html: `<span style="background-color:${color}"> ${feature.properties.WR.toFixed(1)}°</span>`
+                    html: `<span style="background-color:${color}"> ${feature.properties.WR.toFixed(1)}°</span>`
                 })
             })
         },
     }).addTo(overlays.direction);
 }
-
-
-
-
-
-
-
-// Funktion um die Farben zu bestimmen
-
 
 //console.log(COLORS);
 
