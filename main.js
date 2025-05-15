@@ -139,6 +139,7 @@ function showSnow(jsondata) {
 
 
 function showWind(jsondata) {
+    
     L.geoJSON(jsondata, {
         filter: function (feature) {
             console.log(feature.properties)
